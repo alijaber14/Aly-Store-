@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Store | علي ستور - للعدد والأدوات اليدوية الاحترافية</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Font: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            luxe: {
+              black: '#0a0c10',
+              surface: '#11151c',
+              card: '#161b24',
+              cardHover: '#1c232f',
+              border: '#252d3d',
+              borderLight: '#364156',
+              gold: '#cba358',
+              goldHover: '#e0b86c',
+              goldDark: '#997430',
+              metal: '#8a94a6',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #090b0e;
+      color: #f1f5f9;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(203, 163, 88, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(203, 163, 88, 0.04) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Gold Metallic Button */
+    .gold-gradient-btn {
+      background: linear-gradient(135deg, #d8b26e 0%, #b88a3b 50%, #956c24 100%);
+      color: #0b0d11;
+      font-weight: 800;
+      box-shadow: 0 4px 18px rgba(184, 138, 59, 0.28);
+      transition: all 0.25s ease;
+    }
+    .gold-gradient-btn:hover {
+      box-shadow: 0 6px 22px rgba(203, 163, 88, 0.45);
+      filter: brightness(1.12);
+      transform: translateY(-1px);
+    }
+
+    /* Cards Glow Effect */
+    .luxe-card {
+      background: linear-gradient(180deg, #151a23 0%, #10141b 100%);
+      border: 1px solid #232b3a;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .luxe-card:hover {
+      border-color: #cba358;
+      box-shadow: 0 10px 25px -5px rgba(203, 163, 88, 0.15);
+      transform: translateY(-4px);
+    }
+
+    /* Sidebar Drawer Transitions */
+    #sidebarOverlay {
+      transition: opacity 0.3s ease;
+    }
+    #sidebarDrawer {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-luxe-gold selection:text-black">
+
+  <!-- ============================================== -->
+  <!-- TOP HEADER WITH SIDEBAR TOGGLE & CONTACT -->
+  <!-- ============================================== -->
+  <header class="bg-[#0e1218]/95 backdrop-blur-md border-b border-luxe-border sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 h-18 py-3 flex items-center justify-between">
+      
+      <!-- Right: Menu Button + Logo -->
+      <div class="flex items-center gap-3.5">
+        <!-- Sidebar Open Button -->
+        <button onclick="toggleSidebar(true)" aria-label="فتح القائمة الجانبية" class="w-10 h-10 bg-luxe-surface hover:bg-luxe-card border border-luxe-border hover:border-luxe-gold text-luxe-gold rounded-xl flex items-center justify-center transition shadow-sm">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+
+        <!-- Brand Logo -->
+        <a href="javascript:void(0)" onclick="goToHome()" class="flex items-center gap-2.5 group">
+          <div class="w-11 h-11 bg-gradient-to-br from-neutral-900 to-[#1b222d] border border-luxe-gold/60 rounded-xl flex items-center justify-center shadow-lg group-hover:border-luxe-gold transition">
+            <!-- Stylized 'A' Tool Brand Icon -->
+            <span class="text-luxe-gold font-black text-xl tracking-tighter drop-shadow">A</span>
+          </div>
+          <div>
+            <div class="text-xl font-black text-white tracking-wide flex items-center gap-1">
+              <span>Ali</span>
+              <span class="text-luxe-gold">Store</span>
+            </div>
+            <span class="block text-[11px] text-luxe-metal font-medium -mt-1">للعدد والأدوات اليدوية الأصلية</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Left: Direct Phone / WhatsApp Action -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="tel:01064580626" class="hidden sm:flex items-center gap-2 bg-luxe-surface hover:bg-luxe-card border border-luxe-border hover:border-luxe-gold px-3.5 py-2 rounded-xl text-xs font-bold text-gray-200 transition">
+          <i class="fa-solid fa-phone text-luxe-gold"></i>
+          <span dir="ltr">01064580626</span>
+        </a>
+
+        <a href="https://wa.me/201064580626" target="_blank" class="gold-gradient-btn px-3.5 sm:px-4 py-2 rounded-xl text-xs flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span class="hidden xs:inline">واتساب مباشر</span>
+          <span class="xs:hidden">تواصل</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- SIDEBAR DRAWER (معلومات عنا + السوشيال ميديا) -->
+  <!-- ============================================== -->
+  <div id="sidebarOverlay" onclick="toggleSidebar(false)" class="fixed inset-0 bg-black/70 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity"></div>
+  
+  <aside id="sidebarDrawer" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-b from-[#10141b] via-[#0d1015] to-[#0a0c10] border-l border-luxe-border z-50 translate-x-full overflow-y-auto flex flex-col justify-between p-5 shadow-2xl">
+    <div>
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between border-b border-luxe-border/80 pb-4 mb-5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-neutral-900 border border-luxe-gold/50 flex items-center justify-center text-luxe-gold font-bold">
+            A
+          </div>
+          <div>
+            <h3 class="text-sm font-extrabold text-white">Ali Store</h3>
+            <span class="text-[10px] text-luxe-gold block">التميز في جودة العدد اليدوية</span>
+          </div>
+        </div>
+        <button onclick="toggleSidebar(false)" aria-label="إغلاق" class="w-8 h-8 rounded-lg bg-luxe-surface hover:bg-neutral-800 text-gray-400 hover:text-white flex items-center justify-center border border-luxe-border text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- About Us Section (معلومات عنا) -->
+      <div class="mb-6">
+        <div class="flex items-center gap-2 text-luxe-gold text-xs font-bold uppercase tracking-wider mb-2.5">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>معلومات عنا (من نحن)</span>
+        </div>
+        <div class="bg-luxe-card/70 border border-luxe-border/60 rounded-xl p-3.5 text-xs text-gray-300 leading-relaxed">
+          <p class="mb-2">
+            مرحباً بكم في <strong class="text-white font-bold">Ali Store</strong>، وجهتكم الموثوقة الأولى في مصر لتوريد وتوزيع أجود أنواع <span class="text-luxe-gold">العدد اليدوية الاحترافية</span> للورش، الفنيين، والمشاريع المنزلية.
+          </p>
+          <ul class="space-y-1.5 text-[11px] text-luxe-metal pt-1 border-t border-luxe-border/50">
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-luxe-gold text-[10px]"></i>
+              <span>خامات تأسيس وتشطيب الكهرباء وسمارت هوم</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-luxe-gold text-[10px]"></i>
+              <span>يوجد فنيين علي اعلي مستوي لتأسيس والتشطيب</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-luxe-gold text-[10px]"></i>
+              <span>شحن سريع ومحترف لكافة محافظات الجمهورية.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Quick Category Links in Sidebar -->
+      <div class="mb-6">
+        <div class="flex items-center gap-2 text-luxe-gold text-xs font-bold uppercase tracking-wider mb-2.5">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>تصفح الأقسام السريعة</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <button onclick="openCategory('wrenches'); toggleSidebar(false);" class="w-full text-right p-2.5 rounded-lg bg-luxe-surface hover:bg-luxe-card border border-luxe-border text-gray-200 hover:text-luxe-gold transition flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-wrench text-luxe-gold text-xs"></i>
+              سوست سحب كهرباء بأنوعها
+            </span>
+            <i class="fa-solid fa-chevron-left text-[10px] text-gray-500"></i>
+          </button>
+          
+          <button onclick="openCategory('cutting'); toggleSidebar(false);" class="w-full text-right p-2.5 rounded-lg bg-luxe-surface hover:bg-luxe-card border border-luxe-border text-gray-200 hover:text-luxe-gold transition flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-hammer text-luxe-gold text-xs"></i>
+              ماكينة سحب السوسته والخواشات
+            </span>
+            <i class="fa-solid fa-chevron-left text-[10px] text-gray-500"></i>
+          </button>
+
+          <button onclick="openCategory('measuring'); toggleSidebar(false);" class="w-full text-right p-2.5 rounded-lg bg-luxe-surface hover:bg-luxe-card border border-luxe-border text-gray-200 hover:text-luxe-gold transition flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-ruler-combined text-luxe-gold text-xs"></i>
+              عده واكسسورات
+            </span>
+            <i class="fa-solid fa-chevron-left text-[10px] text-gray-500"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contact Info Section -->
+      <div class="mb-6">
+        <div class="flex items-center gap-2 text-luxe-gold text-xs font-bold uppercase tracking-wider mb-2.5">
+          <i class="fa-solid fa-headset"></i>
+          <span>خدمة العملاء والاتصال</span>
+        </div>
+        <div class="bg-luxe-card/50 border border-luxe-border/60 rounded-xl p-3 space-y-2 text-xs text-gray-300">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-phone text-luxe-gold text-xs"></i>
+            <div>
+              <span class="text-[10px] text-gray-400 block">رقم الهاتف والحجز:</span>
+              <a href="tel:01064580626" class="text-white font-bold hover:text-luxe-gold" dir="ltr">01064580626</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5 pt-1.5 border-t border-luxe-border/40">
+            <i class="fa-solid fa-clock text-luxe-gold text-xs"></i>
+            <div>
+              <span class="text-[10px] text-gray-400 block">مواعيد العمل:</span>
+              <span class="text-gray-200">يومياً من 9 صباحاً حتى 11 مساءً</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Media Accounts Section -->
+    <div class="pt-4 border-t border-luxe-border/80">
+      <div class="text-[11px] font-bold text-gray-400 mb-2.5 text-center">تابع وتواصل معنا عبر منصاتنا</div>
+      <div class="grid grid-cols-3 gap-2">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/201064580626" target="_blank" class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-luxe-surface hover:bg-[#25D366]/15 border border-luxe-border hover:border-[#25D366] text-gray-300 hover:text-[#25D366] transition group">
+          <i class="fa-brands fa-whatsapp text-lg mb-1 group-hover:scale-110 transition"></i>
+          <span class="text-[10px] font-bold">واتساب</span>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://facebook.com" target="_blank" class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-luxe-surface hover:bg-[#1877F2]/15 border border-luxe-border hover:border-[#1877F2] text-gray-300 hover:text-[#1877F2] transition group">
+          <i class="fa-brands fa-facebook text-lg mb-1 group-hover:scale-110 transition"></i>
+          <span class="text-[10px] font-bold">فيسبوك</span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-luxe-surface hover:bg-[#E4405F]/15 border border-luxe-border hover:border-[#E4405F] text-gray-300 hover:text-[#E4405F] transition group">
+          <i class="fa-brands fa-instagram text-lg mb-1 group-hover:scale-110 transition"></i>
+          <span class="text-[10px] font-bold">انستجرام</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================== -->
+  <!-- MAIN DYNAMIC CONTENT -->
+  <!-- ============================================== -->
+  <main class="max-w-6xl mx-auto px-4 py-7 flex-1 w-full">
+
+    <!-- ============================================== -->
+    <!-- VIEW 1: HOME PAGE (CATEGORIES + TOP 5 PRODUCTS) -->
+    <!-- ============================================== -->
+    <div id="homeView">
+      
+      <!-- Premium Hero Banner -->
+      <div class="relative overflow-hidden bg-gradient-to-r from-[#141923] via-[#10141b] to-[#0e1117] border border-luxe-border/80 rounded-2xl p-6 sm:p-8 mb-8 shadow-2xl">
+        <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-luxe-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="text-center md:text-right">
+            <div class="inline-flex items-center gap-2 bg-luxe-gold/15 border border-luxe-gold/30 px-3 py-1 rounded-full text-xs font-bold text-luxe-gold mb-3">
+              <i class="fa-solid fa-gem"></i>
+              <span>الأدوات الأصلية بأفضل سعر في مصر</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">
+              متجر <span class="text-luxe-gold">Ali Store</span> للعدد اليدوية
+            </h1>
+            <p class="text-xs sm:text-sm text-luxe-metal max-w-xl leading-relaxed">
+   Aly Store، وجهتكم المتكاملة لتوريد الأدوات الكهربائية وخامات تأسيس وتشطيب الكهرباء، ومستلزمات السمارت هوم والكاميرات، وكل ما يحتاجه الفنيون وأصحاب المشاريع والأفراد.
+
+نحرص على توفير منتجات متنوعة تجمع بين الجودة، والأسعار المناسبة، وسهولة الطلب، مع الاهتمام بتقديم تجربة شراء مريحة وخدمة تساعد عملاءنا في الوصول إلى المنتجات التي يحتاجونها بكل سهولة.
+
+سواء كنت كهربائيًا محترفًا، أو صاحب مشروع، أو بتجهز بيتك، هتلاقي في Aly Store مجموعة متنوعة من المنتجات اللي تساعدك تنجز شغلك بثقة.            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <button onclick="toggleSidebar(true)" class="bg-luxe-card hover:bg-luxe-cardHover border border-luxe-border hover:border-luxe-gold text-gray-200 text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition">
+              <i class="fa-solid fa-circle-info text-luxe-gold"></i>
+              <span>معلومات عنا والتواصل</span>
+            </button>
+            <a href="https://wa.me/201064580626" target="_blank" class="gold-gradient-btn text-xs px-4 py-2.5 rounded-xl flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>طلب مباشر عبر واتساب</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION: THE 3 DISTINCT CATEGORIES -->
+      <div class="mb-12">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+              <i class="fa-solid fa-layer-group text-luxe-gold"></i>
+              <span>أقسام المتجر الرئيسية</span>
+            </h2>
+            <p class="text-xs text-luxe-metal mt-0.5">اضغط على أي قسم لعرض جميع معداته ومنتجاته الخاصة</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          <!-- Category 1 -->
+          <div onclick="openCategory('wrenches')" class="luxe-card rounded-2xl p-6 cursor-pointer text-center group">
+            <div class="w-16 h-16 mx-auto bg-neutral-900 border border-luxe-border group-hover:border-luxe-gold text-luxe-gold rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition shadow-inner">
+              <i class="fa-solid fa-wrench"></i>
+            </div>
+            <h3 class="font-extrabold text-white text-base mb-1.5 group-hover:text-luxe-gold transition">سوست سحب كهرباء بأنوعها</h3>
+            <p class="text-xs text-luxe-metal mb-4 leading-relaxed">سوست فيبر جلاس - سوست واير معدن  </p>
+            <div class="inline-flex items-center gap-1.5 text-xs font-extrabold text-luxe-gold group-hover:underline">
+              <span>دخول القسم وتصفح المنتجات</span>
+              <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-1 transition"></i>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div onclick="openCategory('cutting')" class="luxe-card rounded-2xl p-6 cursor-pointer text-center group">
+            <div class="w-16 h-16 mx-auto bg-neutral-900 border border-luxe-border group-hover:border-luxe-gold text-luxe-gold rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition shadow-inner">
+              <i class="fa-solid fa-hammer"></i>
+            </div>
+            <h3 class="font-extrabold text-white text-base mb-1.5 group-hover:text-luxe-gold transition">ماكينة سحب السوستة والخواشات</h3>
+            <p class="text-xs text-luxe-metal mb-4 leading-relaxed">ماكينة سحب مستورده - ماكينة سحب مصرية - خواشة فريم لس - خواشة متعدده المقاسات -مانع غبار </p>
+            <div class="inline-flex items-center gap-1.5 text-xs font-extrabold text-luxe-gold group-hover:underline">
+              <span>دخول القسم وتصفح المنتجات</span>
+              <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-1 transition"></i>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div onclick="openCategory('measuring')" class="luxe-card rounded-2xl p-6 cursor-pointer text-center group">
+            <div class="w-16 h-16 mx-auto bg-neutral-900 border border-luxe-border group-hover:border-luxe-gold text-luxe-gold rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition shadow-inner">
+              <i class="fa-solid fa-ruler-combined"></i>
+            </div>
+            <h3 class="font-extrabold text-white text-base mb-1.5 group-hover:text-luxe-gold transition">عده يدوية واكسسورات</h3>
+            <p class="text-xs text-luxe-metal mb-4 leading-relaxed">كاوية اسلاك - بنسة ترامل - كوتشة سحب - مانع غبار هيلتي</p>
+            <div class="inline-flex items-center gap-1.5 text-xs font-extrabold text-luxe-gold group-hover:underline">
+              <span>دخول القسم وتصفح المنتجات</span>
+              <i class="fa-solid fa-arrow-left text-[11px] group-hover:-translate-x-1 transition"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION: EXACTLY 5 BEST SELLERS ONLY -->
+      <div>
+        <div class="flex items-center justify-between mb-5 pb-3 border-b border-luxe-border">
+          <div>
+            <h2 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+              <i class="fa-solid fa-fire text-amber-500"></i>
+              <span>المنتجات الـ 5 الأكثر مبيعاً وطلباً</span>
+            </h2>
+            <p class="text-xs text-luxe-metal mt-0.5">العدد الأكثر طلباً في ورش ومنازل مصر</p>
+          </div>
+          <span class="text-xs font-bold text-luxe-gold bg-luxe-gold/10 px-2.5 py-1 rounded-lg border border-luxe-gold/20">
+            Top 5
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="homeProductsGrid">
+          <!-- Top 5 products injected dynamically here -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- VIEW 2: CATEGORY VIEW (SHOWN ONLY WHEN CLICKED) -->
+    <!-- ============================================== -->
+    <div id="categoryView" class="hidden">
+      
+      <!-- Header with Return to Home Button -->
+      <div class="flex items-center justify-between bg-gradient-to-r from-luxe-card to-luxe-surface border border-luxe-border rounded-2xl p-5 mb-8 shadow-xl">
+        <div class="flex items-center gap-4">
+          <button onclick="goToHome()" aria-label="رجوع" class="w-10 h-10 bg-neutral-900 hover:bg-neutral-800 text-luxe-gold rounded-xl flex items-center justify-center transition border border-luxe-border hover:border-luxe-gold">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <div>
+            <h2 id="categoryTitle" class="text-lg sm:text-xl font-black text-white">عنوان القسم</h2>
+            <p id="categoryDesc" class="text-xs text-luxe-metal mt-0.5">تفاصيل منتجات هذا القسم فقط</p>
+          </div>
+        </div>
+        <button onclick="goToHome()" class="gold-gradient-btn text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow">
+          <i class="fa-solid fa-house text-[11px]"></i>
+          <span class="hidden sm:inline">الرئيسية</span>
+        </button>
+      </div>
+
+      <!-- Specific Category Products Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="categoryProductsGrid">
+        <!-- Injected dynamically for this category only -->
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ============================================== -->
+  <!-- FOOTER -->
+  <!-- ============================================== -->
+  <footer class="bg-[#0b0e13] border-t border-luxe-border mt-14 pt-8 pb-6 text-xs text-luxe-metal">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center md:text-right">
+        <!-- Store summary -->
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+            <div class="w-7 h-7 rounded-lg bg-neutral-900 border border-luxe-gold flex items-center justify-center text-luxe-gold font-bold text-xs">A</div>
+            <span class="text-white font-bold text-sm">Ali Store</span>
+          </div>
+          <p class="text-xs leading-relaxed text-gray-400">
+            المتجر المتخصص في توفير أفضل المعدات والعدد اليدوية ذات الصلابة العالية لخدمة الفنيين وأصحاب المهن الحرة بجودة مضمونة.
+          </p>
+        </div>
+
+        <!-- Shipping & Booking Note -->
+        <div class="bg-luxe-card/40 border border-luxe-border rounded-xl p-3.5">
+          <div class="font-bold text-luxe-gold mb-1 flex items-center justify-center md:justify-start gap-1.5">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>تأكيد الحجز والدفع عند الاستلام</span>
+          </div>
+          <p class="text-[11px] text-gray-300 leading-relaxed">
+            الشحن لجميع محافظات مصر. لتأكيد جدية استلام الأوردر يتم تحويل قيمة الشحن مسبقاً عبر انستا باي - فودافون كاش على رقمنا <strong class="text-white">01064580626</strong> وتدفع قيمة العدة فقط عند المعاينة.
+          </p>
+        </div>
+
+        <!-- Social Media Buttons -->
+        <div class="flex flex-col items-center md:items-end justify-center">
+          <span class="text-white font-bold mb-2">قنوات التواصل المباشر</span>
+          <div class="flex items-center gap-2.5">
+            <a href="https://wa.me/201064580626" target="_blank" class="w-9 h-9 rounded-xl bg-luxe-card hover:bg-neutral-800 border border-luxe-border hover:border-luxe-gold text-luxe-gold flex items-center justify-center text-sm transition" title="واتساب">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-xl bg-luxe-card hover:bg-neutral-800 border border-luxe-border hover:border-luxe-gold text-luxe-gold flex items-center justify-center text-sm transition" title="فيسبوك">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-xl bg-luxe-card hover:bg-neutral-800 border border-luxe-border hover:border-luxe-gold text-luxe-gold flex items-center justify-center text-sm transition" title="انستجرام">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="tel:01064580626" class="w-9 h-9 rounded-xl bg-luxe-card hover:bg-neutral-800 border border-luxe-border hover:border-luxe-gold text-luxe-gold flex items-center justify-center text-sm transition" title="اتصال">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+          <span class="text-[11px] text-gray-400 mt-2 font-mono" dir="ltr">01064580626</span>
+        </div>
+      </div>
+
+      <div class="border-t border-luxe-border/60 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-gray-500">
+        <span>جميع الحقوق محفوظة © 2026 متجر Ali Store</span>
+        <span>صُمم بأعلى معايير الأناقة والاحترافية</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ============================================== -->
+  <!-- ORDER MODAL WITH GOVERNORATE SHIPPING CALC -->
+  <!-- ============================================== -->
+  <div id="orderModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div class="bg-gradient-to-b from-[#161c26] to-[#0f131a] border border-luxe-border w-full max-w-md rounded-2xl p-5 shadow-2xl relative text-right">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b border-luxe-border pb-3 mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg bg-luxe-gold/20 text-luxe-gold flex items-center justify-center text-xs">
+            <i class="fa-solid fa-cart-arrow-down"></i>
+          </div>
+          <h3 class="font-extrabold text-white text-sm sm:text-base">تأكيد طلب المنتج | Ali Store</h3>
+        </div>
+        <button onclick="closeOrderModal()" class="w-7 h-7 rounded-lg bg-neutral-900 text-gray-400 hover:text-white flex items-center justify-center border border-luxe-border">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitSimpleOrder(event)" class="space-y-3.5">
+        
+        <!-- Product Summary Box -->
+        <div class="bg-neutral-950/80 p-3 rounded-xl border border-luxe-border/80 flex justify-between items-center text-xs">
+          <div>
+            <div id="modalProdTitle" class="font-bold text-white text-xs sm:text-sm">اسم المنتج</div>
+            <div class="text-luxe-metal mt-0.5">سعر الوحدة: <span id="modalProdPrice" class="text-luxe-gold font-bold">0</span> ج.م</div>
+          </div>
+          <span class="bg-luxe-gold/15 text-luxe-gold border border-luxe-gold/30 px-2 py-0.5 rounded text-[11px] font-bold">أصلي معتمد</span>
+        </div>
+
+        <!-- Full Name -->
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">الاسم ثلاثي *</label>
+          <input type="text" id="orderName" required placeholder="أدخل اسم المستلم" class="w-full bg-neutral-950 border border-luxe-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-luxe-gold transition">
+        </div>
+
+        <!-- Phone Number -->
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">رقم الموبايل للتواصل والتوصيل *</label>
+          <input type="tel" id="orderPhone" required placeholder="01xxxxxxxxx" class="w-full bg-neutral-950 border border-luxe-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-luxe-gold transition">
+        </div>
+
+        <!-- Governorate Selection -->
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">المحافظة (لحساب مصاريف الشحن) *</label>
+          <select id="orderGov" required onchange="calculateModalTotal()" class="w-full bg-neutral-950 border border-luxe-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-luxe-gold transition">
+            <option value="" disabled selected>-- اختر محافظتك --</option>
+            <option value="100" data-name="القاهرة">القاهرة (تكلفة الشحن 100 ج.م)</option>
+            <option value="100" data-name="الجيزة">الجيزة (تكلفة الشحن 100 ج.م)</option>
+            <option value="100" data-name="القليوبية">القليوبية (تكلفة الشحن 100 ج.م)</option>
+            <option value="100" data-name="الإسكندرية">الإسكندرية (تكلفة الشحن 100 ج.م)</option>
+            <option value="120" data-name="محافظات الدلتا والقناة">محافظات الدلتا والقناة (120 ج.م)</option>
+            <option value="120" data-name="محافظات الصعيد">محافظات الصعيد (بني سويف حتى أسوان) (120 ج.م)</option>
+            <option value="140" data-name="المحافظات الحدودية والبحر الأحمر">المحافظات الحدودية ومطروح وسيناء (140 ج.م)</option>
+          </select>
+        </div>
+
+        <!-- Detailed Address -->
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">العنوان بالتفصيل *</label>
+          <input type="text" id="orderAddress" required placeholder="المنطقة، الشارع، علامة مميزة أو رقم العمارة" class="w-full bg-neutral-950 border border-luxe-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-luxe-gold transition">
+        </div>
+
+        <!-- Quantity & Shipping breakdown -->
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div>
+            <label class="block font-bold text-gray-300 mb-1">الكمية المطلوبة</label>
+            <div class="flex items-center border border-luxe-border rounded-xl bg-neutral-950 overflow-hidden">
+              <button type="button" onclick="updateModalQty(-1)" class="w-8 h-8 text-luxe-metal hover:text-white font-bold text-base transition bg-neutral-900">-</button>
+              <input type="text" id="orderQty" value="1" readonly class="w-full text-center bg-transparent text-white font-bold focus:outline-none text-xs">
+              <button type="button" onclick="updateModalQty(1)" class="w-8 h-8 text-luxe-metal hover:text-white font-bold text-base transition bg-neutral-900">+</button>
+            </div>
+          </div>
+          <div>
+            <label class="block font-bold text-gray-300 mb-1">قيمة الشحن</label>
+            <div class="h-8 flex items-center justify-center bg-neutral-950 border border-luxe-border rounded-xl text-luxe-gold font-bold">
+              <span id="shippingPriceText">0</span>&nbsp;ج.م
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Calculation -->
+        <div class="bg-luxe-card/90 p-3 rounded-xl border border-luxe-border flex justify-between items-center text-xs">
+          <span class="text-gray-300">المبلغ الإجمالي شامل الشحن:</span>
+          <span class="text-base font-black text-luxe-gold"><span id="grandTotalText">0</span> ج.م</span>
+        </div>
+
+        <!-- Important Payment & Booking Note -->
+        <div class="p-3 rounded-xl bg-amber-950/25 border border-amber-500/35 text-amber-300 text-[11px] leading-relaxed">
+          <i class="fa-solid fa-circle-exclamation ml-1 text-amber-400"></i>
+          <strong>تنبيه جدية الاستلام:</strong> لتأكيد خروج مندوب الشحن يتم تحويل قيمة الشحن (<span id="alertShippingText" class="font-bold underline text-white">المحددة</span>) فودافون كاش على <strong class="text-white font-mono" dir="ltr">01064580626</strong>، وباقي ثمن المنتج يدفع عند الاستلام والمعاينة.
+        </div>
+
+        <!-- Submit to WhatsApp Button -->
+        <button type="submit" class="w-full gold-gradient-btn py-3 rounded-xl text-xs flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>تأكيد الحجز وإرسال الطلب عبر واتساب</span>
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING QUICK WHATSAPP BUTTON -->
+  <a href="https://wa.me/201064580626" target="_blank" aria-label="واتساب سريع" class="fixed bottom-5 left-5 z-40 w-13 h-13 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition duration-300">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- ============================================== -->
+  <!-- JAVASCRIPT LOGIC -->
+  <!-- ============================================== -->
+  <script>
+    const STORE_WHATSAPP = "201064580626";
+
+    // Products Database
+    const productsData = [
+      // TOP 5 BEST SELLERS (Exclusively shown on Home View)
+      { id: 1, category: 'wrenches', name: 'شنطة طقم لقم وسيستم 46 قطعة كروم فاناديوم', price: 650, oldPrice: 790, isBestSeller: true, img: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&q=80' },
+      { id: 2, category: 'wrenches', name: 'طقم مفاتيح بلدي مشرشر 12 قطعة في جراب متين', price: 520, oldPrice: 650, isBestSeller: true, img: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80' },
+      { id: 3, category: 'cutting', name: 'طقم بنس وقصافات احترافي 3 قطع عازل للحرارة', price: 380, oldPrice: 470, isBestSeller: true, img: 'https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?auto=format&fit=crop&w=600&q=80' },
+      { id: 4, category: 'cutting', name: 'شاكوش خلع وتكسير 500 جرام يد فايبر جلاس مريحة', price: 210, oldPrice: 260, isBestSeller: true, img: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80' },
+      { id: 5, category: 'measuring', name: 'شريط قياس مصفح 7.5 متر أوتوماتيك كاوتشوك صلب', price: 160, oldPrice: 210, isBestSeller: true, img: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80' },
+
+      // Products Inside Distinct Categories Only
+      { id: 6, category: 'wrenches', name: 'طقم مفكات معزولة للكهرباء 8 قطع ممغنطة (1000V)', price: 340, oldPrice: 420, isBestSeller: false, img: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=600&q=80' },
+      { id: 7, category: 'cutting', name: 'قوس منشار حدادي للمعادن والخشب + 5 أسلحة احتياطية', price: 275, oldPrice: 330, isBestSeller: false, img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80' },
+      { id: 8, category: 'measuring', name: 'ميزان مياه ألومنيوم مغناطيسي 60 سم 3 عيون ليزر', price: 290, oldPrice: 360, isBestSeller: false, img: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80' },
+      { id: 9, category: 'measuring', name: 'صندوق وحقيبة عدة بلاستيك مسلح 19 بوصة هيفي ديوتي', price: 480, oldPrice: 590, isBestSeller: false, img: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    const categoryNames = {
+      'wrenches': { 
+        title: 'سوست سحب كهرباء بأنوعها', 
+        desc: 'سوست سحب كهرباء بأنوعها' 
+      },
+      'cutting': { 
+        title: 'ماكينة سحب السوستة والخواشات', 
+        desc: 'ماكينة سحب مستورده - ماكينة سحب مصرية - خواشة فريم لس - خواشة متعدده المقاسات -مانع غبار' 
+      },
+      'measuring': { 
+        title: 'عده يدوية واكسسورات', 
+        desc: 'كاوية اسلاك - بنسة ترامل - كوتشة سحب - مانع غبار هيلتي' 
+      }
+    };
+
+    let activeProduct = { name: '', price: 0, qty: 1 };
+
+    // Sidebar Toggle
+    function toggleSidebar(open) {
+      const drawer = document.getElementById('sidebarDrawer');
+      const overlay = document.getElementById('sidebarOverlay');
+
+      if (open) {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
+      } else {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        overlay.classList.remove('opacity-100');
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    // Product Card Template
+    function createProductCard(product) {
+      return `
+        <div class="luxe-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+          <div class="h-48 bg-neutral-950 overflow-hidden relative">
+            <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            ${product.isBestSeller ? '<span class="absolute top-3 right-3 bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 font-black text-[10px] px-2.5 py-1 rounded-md shadow-lg">الأكثر مبيعاً 🔥</span>' : ''}
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-sm font-bold text-white mb-2 leading-relaxed group-hover:text-luxe-gold transition">${product.name}</h3>
+            </div>
+            <div>
+              <div class="flex items-baseline justify-between mb-4 pt-3 border-t border-luxe-border/80">
+                <div>
+                  <span class="text-xl font-black text-luxe-gold">${product.price}</span>
+                  <span class="text-xs text-luxe-metal mr-1">ج.م</span>
+                </div>
+                <span class="text-xs line-through text-neutral-500">${product.oldPrice} ج.م</span>
+              </div>
+              <button onclick="openOrderModal('${product.name}', ${product.price})" class="w-full gold-gradient-btn text-xs py-2.5 rounded-xl flex items-center justify-center gap-2 shadow">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+                <span>اطلب المنتج الآن</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render Home Top 5
+    function renderHomePage() {
+      const homeGrid = document.getElementById('homeProductsGrid');
+      const top5 = productsData.filter(p => p.isBestSeller).slice(0, 5);
+      homeGrid.innerHTML = top5.map(p => createProductCard(p)).join('');
+    }
+
+    // Open Category View
+    function openCategory(catKey) {
+      const homeView = document.getElementById('homeView');
+      const categoryView = document.getElementById('categoryView');
+      const catTitle = document.getElementById('categoryTitle');
+      const catDesc = document.getElementById('categoryDesc');
+      const categoryGrid = document.getElementById('categoryProductsGrid');
+
+      catTitle.textContent = categoryNames[catKey].title;
+      catDesc.textContent = categoryNames[catKey].desc;
+
+      const filtered = productsData.filter(p => p.category === catKey);
+      categoryGrid.innerHTML = filtered.map(p => createProductCard(p)).join('');
+
+      homeView.classList.add('hidden');
+      categoryView.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Go Back to Home View
+    function goToHome() {
+      document.getElementById('categoryView').classList.add('hidden');
+      document.getElementById('homeView').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Order Modal Functions
+    function openOrderModal(name, price) {
+      activeProduct = { name, price, qty: 1 };
+      document.getElementById('modalProdTitle').textContent = name;
+      document.getElementById('modalProdPrice').textContent = price;
+      document.getElementById('orderQty').value = 1;
+      document.getElementById('orderGov').value = "";
+      calculateModalTotal();
+
+      const modal = document.getElementById('orderModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeOrderModal() {
+      const modal = document.getElementById('orderModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function updateModalQty(delta) {
+      let q = parseInt(document.getElementById('orderQty').value) || 1;
+      q += delta;
+      if (q < 1) q = 1;
+      document.getElementById('orderQty').value = q;
+      activeProduct.qty = q;
+      calculateModalTotal();
+    }
+
+    function calculateModalTotal() {
+      const govSelect = document.getElementById('orderGov');
+      const shippingVal = parseInt(govSelect.value) || 0;
+      const subtotal = activeProduct.price * activeProduct.qty;
+      const grandTotal = subtotal + shippingVal;
+
+      document.getElementById('shippingPriceText').textContent = shippingVal;
+      document.getElementById('grandTotalText').textContent = grandTotal;
+      document.getElementById('alertShippingText').textContent = shippingVal > 0 ? `${shippingVal} ج.م` : 'المحددة بالمحافظة';
+    }
+
+    function submitSimpleOrder(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('orderName').value.trim();
+      const phone = document.getElementById('orderPhone').value.trim();
+      const address = document.getElementById('orderAddress').value.trim();
+      const govSelect = document.getElementById('orderGov');
+      const shippingVal = parseInt(govSelect.value) || 0;
+      const govName = govSelect.options[govSelect.selectedIndex]?.getAttribute('data-name') || 'غير محدد';
+
+      if (!shippingVal) {
+        alert("يرجى اختيار المحافظة لحساب تكلفة الشحن");
+        return;
+      }
+
+      const subtotal = activeProduct.price * activeProduct.qty;
+      const grandTotal = subtotal + shippingVal;
+
+      const message = 
+`*طلب جديد من Ali Store (علي ستور)*
+━━━━━━━━━━━━━━━━━━
+🛠️ *المنتج:* ${activeProduct.name}
+🔢 *الكمية:* ${activeProduct.qty} قطعة
+💰 *سعر العدة:* ${subtotal} ج.م
+🚚 *المحافظة:* ${govName} (شحن: ${shippingVal} ج.م)
+💵 *الإجمالي الكلي:* ${grandTotal} ج.م
+━━━━━━━━━━━━━━━━━━
+👤 *الاسم:* ${name}
+📞 *الهاتف:* ${phone}
+📍 *العنوان:* ${address}
+━━━━━━━━━━━━━━━━━━
+📌 *تأكيد الحجز (الدفع عند الاستلام):*
+سيتم تحويل مصاريف الشحن (${shippingVal} ج.م) على 01064580626 بفودافون كاش لتأكيد خروج الشحنة، وباقي المبلغ عند الاستلام والمعاينة.`;
+
+      const whatsappUrl = `https://wa.me/${STORE_WHATSAPP}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+      closeOrderModal();
+    }
+
+    // Initialize
+    window.onload = function() {
+      renderHomePage();
+    };
+  </script>
+</body>
+</html>
